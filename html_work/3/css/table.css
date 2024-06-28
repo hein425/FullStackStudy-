@@ -1,0 +1,13 @@
+
+/*선택자: id class 태그*/
+
+
+table,th,td{
+      border: 1px solid #222;
+      border-collapse: collapse;
+
+}
+
+th,td{
+    padding: 10px 20px 10px 20px; 
+}
