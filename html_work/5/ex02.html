@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+    <form action="">
+        <fieldset>
+            <legend>아이디 패스워드</legend>
+            <label for="mola">몰라</label>
+            <input type="checkbox" name="mola" id="mola" checked>
+            <label for="id">ID</label>
+            <input type="text" name="id" id="id" placeholder="아이디" size="20" maxlength="10">
+            <label for="passowrd">PASSWORD</label>
+            <input type="password" name="passowrd" id="password"placeholder="비밀번호">
+
+            <label for="tel">tel</label>
+            <input type="tel" name="tel" id="tel" placeholder="전화번호">
+
+            <label for="email">email</label>
+            <input type="email" name="email" id="email" placeholder="이메일" required>
+
+
+            <button type="button" id="btn">속성바꾸기</button>
+
+            <button>전송</button>
+        </fieldset>
+    </form>
+  
+</body>
+</html>
+
+<script>
+          document.getElementById('btn').addEventListener('click',()=>{
+            document.getElementById('password').setAttribute('type','text');
+          })
+
+</script>

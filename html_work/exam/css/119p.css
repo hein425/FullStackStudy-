@@ -1,3 +1,5 @@
 #LILI{
   list-style-type: none;
 }
+
+ul{border: 1px solid black; width: 500px; height: 300px;}
