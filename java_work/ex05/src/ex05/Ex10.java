@@ -10,10 +10,11 @@ public class Ex10 {
 		
 		for(;num<100;num++) {
 			
-			if(num%3==0&&num%4==0){
+			if(num%3==0 && num%4==0){
 			
 			System.out.println("num="+num);
-			break;
+			
+			
 			}
 			
 			
