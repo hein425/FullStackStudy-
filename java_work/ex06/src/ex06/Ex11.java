@@ -8,7 +8,7 @@ public class Ex11 {
 		
 		for (int i = 0; i < 10; i++) {
 			for (int j = 1; j < i + 2; j++) {
-				System.out.println("j = " + j);
+				System.out.println("i="+i+"j = " + j);
 				
 			 a= a+j;
 			}
