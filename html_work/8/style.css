@@ -1,0 +1,13 @@
+p{
+  color:coral;
+}
+
+div{
+  border: 1px solid navy;
+  width: 100px;
+  height: 100px;
+  /* padding-left: 30px; */
+  padding: 12 3 6 9px;
+  /* margin-left: 30px; */
+  margin: 0 auto 0 auto;
+}
