@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="335f7c50-740f-4529-8e3c-5e60dacf9150" name="Changes" comment="" />
+    <list default="true" id="d019b661-51f4-43cd-87a6-e76ea937918b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ex08/src/Ex01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ex08/src/Ex02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/java_work.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex06/src/ex06/Ex02.java" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/src/ex06/Ex02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex06/src/ex06/Ex11.java" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/src/ex06/Ex11.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex07/src/BB.java" beforeDir="false" afterPath="$PROJECT_DIR$/ex07/src/BB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex07/src/CC.java" beforeDir="false" afterPath="$PROJECT_DIR$/ex07/src/CC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex07/src/DD.java" beforeDir="false" afterPath="$PROJECT_DIR$/ex07/src/DD.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,12 +22,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
-  <component name="ProjectId" id="2iofnTxyxUEOdHShEoBybDVn6Bl" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2iwXk8fASyutCeoX7LgUv9hoUmC" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
@@ -26,17 +34,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/work/java_work"
+    "last_opened_file_path": "D:/work/java_work/ex08"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="335f7c50-740f-4529-8e3c-5e60dacf9150" name="Changes" comment="" />
-      <created>1720162017164</created>
+      <changelist id="d019b661-51f4-43cd-87a6-e76ea937918b" name="Changes" comment="" />
+      <created>1720402758054</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1720162017164</updated>
+      <updated>1720402758054</updated>
     </task>
     <servers />
   </component>

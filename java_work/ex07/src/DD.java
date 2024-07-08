@@ -6,6 +6,7 @@ public class DD {
     public static void doA(int end){
         int suma = 0;
         for(int i =1; i<= end ; i++){
+            System.out.println(i);
             suma=suma+i;
         }
         System.out.println("1부터"+ end +"까지 더한 수"+suma);
@@ -15,6 +16,7 @@ public class DD {
     public static void doB(int end){
         int sumb =1;
         for(int j=1;j<=end;j++){
+            System.out.println(j);
             sumb=sumb*j;
         }
         System.out.println("1부터"+ end +"까지 곱한 수"+sumb);
