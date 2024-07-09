@@ -12,6 +12,7 @@ public class Ex06_4 {
 
         int a = sc.nextInt();
         int b = sc.nextInt();
+        int max = 0;
 
         for (int i = 1 ; a%i == 0 && b%i == 0; i++) {
             System.out.println("i="+i);

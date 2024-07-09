@@ -11,11 +11,12 @@ public class Ex06_2 {
         int a = sc.nextInt();
 
         //a/3600 = 시간  a/60= 분   a=초
-        int h = a/3600;
-        int m = (a%3600)/60;
-        int s = (a%3600)%60;
+        int d = a/86400;
+        int h = (a%86400)/3600;
+        int m = ((a%86400)%3600)/60;
+        int s = ((a%86400)%3600)%60;
 
-        System.out.println("["+h+" 시간 "+m+" 분 "+s+"초"+"]");
+        System.out.println("["+d+"일"+h+" 시간 "+m+" 분 "+s+"초"+"]");
 
     }
 }
