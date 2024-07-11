@@ -1,65 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
-*{
-  font-family: "Grandiflora One", cursive;
-  font-weight: 900;
-  font-style: normal;
-}
-    *{
-      margin:0; padding:0; box-sizing: border-box;
-    }
-    .container{
-      width: 960px;
-      min-width: 960px;
-      margin: 0 auto;
-      background-color: gainsboro;
-    }
-    ul{
-      float: right;
-    }
-    .header{
-      overflow: hidden;
-    }
-  
-    .logo{
-      display: block;
-      margin: 0.5rem;
-      padding: 1.5rem;
-    }
-
-    li{
-      list-style-type: none;
-      float: left;
-    }
-    a{
-      display: block;
-      margin: 0.8rem 0.3rem;
-      padding: 0.4rem 1rem;
-      text-decoration: none;
-      background-color: /*darkgreen*/;
-      color: black;
-    }
-    .sign{
-      background-color: deeppink;
-      border-radius: 0.3rem;
-    }
-    .register{
-      background-color: deepskyblue;
-      border-radius: 0.4rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".slider").bxSlider({
+        nextSelector: '#slider-next',
+        prevSelector: '#slider-prev',
+        nextText: 'Go next→',
+        prevText: '← Go back'
+      });
+    });
+  </script>
 </head>
+
 <body>
   <div class="container">
     <div class="header">
-      <div><h1 class="logo">Logo</h1></div>
+      <div class="logo">
+        <h1>Logo Giants</h1>
+      </div>
       <div>
         <ul>
           <li><a href="#">Pricing</a></li>
@@ -72,15 +39,61 @@
         </ul>
       </div>
     </div>
-
+    <div class="prevnext">
+      <span id="slider-prev"></span>
+      <span id="slider-next"></span>
+    </div>
     <div class="slide" style="background-color: white;">
-      <h1>slide</h1>
+
+
+      <div class="slider">
+        <div>
+          <img src="image/aaa.jpg">I am a 전준우.
+        </div>
+        <div>
+          <img src="image/bbb.jpg">I am a 박세웅.
+        </div>
+        <div>
+          <img src="image/ccc.jpg">I am a 김원중.
+        </div>
+        <div>
+          <img src="image/ddd.jpg">I am a 황성빈.
+        </div>
+      </div>
+      <div class="heading">
+        <h1>Heading 선수단</h1>
+        <h2>SubHeading 지듣노</h2>
+        <div class="sub-heading">
+          <div>
+            <h1>전준우</h1>
+            <p>😎 Kyo181<br> 실리카겔</p>
+          </div>
+          <div>
+            <h1>박세웅</h1>
+            <p>💕 Paul<br> 혁오</p>
+          </div>
+          <div>
+            <h1>김원중</h1>
+            <p>✨ 사라지는꿈<br>술탄오브더디스코</p>
+          </div>
+        </div>
+        <div class="sub-heading">
+          <div>
+            <h1>전준우</h1>
+            <p>😎 Kyo181<br> 실리카겔</p>
+          </div>
+          <div>
+            <h1>박세웅</h1>
+            <p>💕 Paul<br> 혁오</p>
+          </div>
+          <div>
+            <h1>김원중</h1>
+            <p>✨사라지는꿈<br>술탄오브더디스코</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="heading">
-
-    </div>
-
   </div>
 </body>
+
 </html>
