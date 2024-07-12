@@ -41,7 +41,7 @@ public class Ex07 {
         }
     }
 
-    public static void hol(int num{
+    public static void hol(int num){
 
     }
 
