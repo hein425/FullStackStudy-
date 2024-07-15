@@ -14,7 +14,7 @@ public class Ex10_1 {
             sum = sum+a[i];
             p = (sum/a.length);
         }
-        System.out.println(sum);
-        System.out.println(p);
+        System.out.println("총합은= "+sum);
+        System.out.println("평균은= "+p);
     }
 }
