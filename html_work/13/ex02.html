@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{ margin: 0; padding: 0;  box-sizing: border-box;}
+    .header{
+      background-color: aliceblue;
+    }
+    .content{
+      overflow: hidden;
+      background-color: antiquewhite;
+    }
+    .footer{
+      background-color: aliceblue;
+    }
+    .leftside{
+      float: left;
+      height: 500px;
+      background-color: aqua;
+    }
+    .centre{
+      float: left;
+      height: 500px;
+    }
+    .rightside{
+      float: right;
+      height: 500px;
+      background-color: aqua;
+    }
+    .myfix{
+      position: fixed;
+      height: 100px;
+      width: 100px;
+      background-color: rgba(80, 54, 105, 0.2);
+      bottom: 30px;
+      right: 30px;
+      border-radius: 50px;
+    }
+    .myst{
+      position: sticky;
+      background-color: cornsilk;
+      top: 0;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>사이트 제목</h1>
+    </div>
+    <div class="myst"><h2>스크롤만나면여기고정될예정</h2></div>
+    <div class="content">
+      <div class="leftside"><h2>왼쪽사이드바</h2></div>
+      <div class="centre"><h2>본문</h2></div>
+      <div class="rightside"><h2>오른쪽사이드바</h2></div>
+    </div>
+    <div class="footer">
+      <h1>푸터</h1>
+    </div>
+  </div>
+  <div class="myfix">삒삒스</div>
+</body>
+</html>
