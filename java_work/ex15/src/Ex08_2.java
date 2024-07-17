@@ -44,6 +44,8 @@ public class Ex08_2 {
 
         Song v = new Song(a,c,t,y);
         v.Show();
+
+        System.out.println();
     }
 }
 
