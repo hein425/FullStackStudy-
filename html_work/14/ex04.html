@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   .back{
+    
+      margin: 30px;
+      height: 300px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+  }
+  .back::before{
+    content: '';
+    background-image: url(442432.jpg);
+    background-size: cover;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .container{
+    position: relative;
+  }
+  h1{
+    color: black;
+    text-shadow: 3px 3px 10px #000;
+  }
+  .grad{
+    height: 300px;
+    background: linear-gradient(to right, midnightblue,mediumvioletred);
+  }
+  </style>
+  
+</head>
+<body>
+  <div class="back">
+    <div class="container">
+      <h1>나는할수있다?</h1>
+      <div>
+        내용
+      </div>
+    </div>
+  </div>
+<div class="grad">
+
+</div>
+  
+</body>
+</html>
