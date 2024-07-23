@@ -4,7 +4,7 @@ package ex06;
 public class Ex12 {
 	public static void main(String[] args) {
 // ㅑ를 1부터 올려가면서 홀수는 더하고 짝수는 뺴는 스크립트
-//
+
 		int i = 0;
 		int sum = 0;
 
@@ -23,7 +23,5 @@ public class Ex12 {
 			
 			System.out.println(sum);
 		}
-
-		
 	}
 }
