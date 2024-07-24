@@ -62,17 +62,6 @@ public class Baccarat {
                     a += pthd;
                 }
 
-
-                //뱅커 서드카드 룰
-                if ((Psum == 6 || Psum == 7) && (0 <= Bsum && Bsum <= 5)) { //플레이어가 6,7 스탠드일때, 뱅커 두장합이 0~5면 서드 받는다.
-                    int bthd = (int) (Math.random() * 10);
-                    Bsum = bfir + bsec + bthd;
-                    if (Bsum >= 10)
-                        Bsum = Bsum % 10;
-                    System.out.println("ㄴBanker: " + bfir + " " + bsec + " " + bthd + " ==>> " + Bsum);
-                }
-
-
                 //플레이어 서드카드에 따른 뱅커 서드카드 룰
                 if (0 <= Bsum && Bsum <= 2) { //뱅커 두장 합이 0~2면 한장더 받는다
                     int bthd = (int) (Math.random() * 10);
@@ -109,6 +98,12 @@ public class Baccarat {
                         Bsum = Bsum % 10;
                     System.out.println("ㄴBanker: " + bfir + " " + bsec + " " + bthd + " ==>> " + Bsum);
 
+                }else if ((Psum == 6 || Psum == 7) && (0 <= Bsum && Bsum <= 5)) { //플레이어가 6,7 스탠드일때, 뱅커 두장합이 0~5면 서드 받는다.
+                    int bthd = (int) (Math.random() * 10);                        //뱅커 서드카드 룰
+                    Bsum = bfir + bsec + bthd;
+                    if (Bsum >= 10)
+                        Bsum = Bsum % 10;
+                    System.out.println("ㄴBanker: " + bfir + " " + bsec + " " + bthd + " ==>> " + Bsum);
                 }
 
                 //승무패 판정
