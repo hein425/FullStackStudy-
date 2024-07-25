@@ -14,7 +14,6 @@ public class BackAccountMain {
 //        park.initAccount("1111","850707",5000);
 //        yoon.initAccount("2222","950444",5000);
 
-
         park.cmb();
         yoon.cmb();
 
@@ -23,8 +22,6 @@ public class BackAccountMain {
 
         park.cmb();
         yoon.cmb();
-
-
 
         park.withdraw(1000);
         yoon.withdraw(2000);

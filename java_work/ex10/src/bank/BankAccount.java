@@ -14,11 +14,11 @@ public class BankAccount {
         num = n;
     }
 
-    public void initAccount(String acc,String ss,int n){
-        accNumber = acc;
-        ssNumber = ss;
-        num = n;
-    }
+//    public void initAccount(String acc,String ss,int n){
+//        accNumber = acc;
+//        ssNumber = ss;
+//        num = n;
+//    }
 
     public void cmb() {
         System.out.println("====================");

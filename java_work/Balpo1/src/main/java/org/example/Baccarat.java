@@ -77,7 +77,7 @@ public class Baccarat {
                         Bsum = Bsum % 10;
                     System.out.println("ㄴBanker: " + bfir + " " + bsec + " " + bthd + " ==>> " + Bsum);
 
-                } else if (Bsum == 4 && (2 <= a && a <= 7)) { //뱅커 두장 합이 4, 플레이어 서드카드가 2~7이면 받는다
+                } else if ((Bsum == 4) && (2 <= a && a <= 7)) { //뱅커 두장 합이 4, 플레이어 서드카드가 2~7이면 받는다
                     int bthd = (int) (Math.random() * 10);
                     Bsum = bfir + bsec + bthd;
                     if (Bsum >= 10)
@@ -117,6 +117,8 @@ public class Baccarat {
                     System.out.println("!! Banker WIN !!");
                     break;
                 }
+
+
             }
         }
     }
