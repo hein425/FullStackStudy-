@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="heading">어서오세요</h1>
+  <div id="aa">
+
+  </div>
+  <p id="text">위 텍스트를 클릭해보세요.</p>
+  
+<script>
+    const bb = document.querySelector("#aa")
+    const aa = prompt("이름을 입력하세요.")
+    
+    bb.innerText = "어서오세요 "+aa+"님, 환영합니다."
+
+    console.log(aa+"님, 환영합니다.");
+    // let sign = prompt("이름을 입력하세요");
+    // div("<b><big>"+sign+"</big></b>님, 환영합니다.")
+
+</script>
+</body>
+</html>

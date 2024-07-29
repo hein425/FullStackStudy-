@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="heading">자바스크립트</h1>
+  <p id="text">위 텍스트를 클릭해보세요.</p>
+
+  <script>  //<script src="js/ex01.js">
+      const heading = document.querySelector("#heading");
+      // const clickText = document.querySelector("#text");
+      heading.onclick = () => { // 화살표 함수. 익명함수.
+        heading.style.color = "red";
+      }
+
+      // const flagTF = True;
+
+      // if(flagTF === True){
+      //   alert("존재하지않는아이디입니다.");
+      // }else{
+      //   flagTF = True;
+      // }
+      
+      // const reply =
+       confirm("프로필사진을 바꾸시겠습니까?");
+       prompt("이름을 입력하세요.","이름");
+      
+      // if(reply === True)
+      //   alert("프로필이변경되었습니다");
+      // else return;
+      
+
+      
+  </script>
+</body>
+</html>
