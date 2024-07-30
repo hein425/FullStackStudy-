@@ -226,6 +226,22 @@ select customer.name, book.bookname
 from customer, book, orders
 where (customer.custid=orders.custid) and (book.bookid=orders.bookid)
 order by name;
+-- )))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 
+-- 가장 비싼 도서의 이름은?  sql 안에 sql이 또 잇는 서브쿼리
+select bookname, price
+from book
+where price = (select max(price)from book); 
+
+-- 도서를 구매한 이력이 있는 고객명
+
+select distinct name
+from customer,orders
+where customer.custid=orders.custid;
+
+-- 서브쿼리 사용 
+select name
+from customer
+where custid in (select distinct custid from orders);
 
 
