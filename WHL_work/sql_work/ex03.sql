@@ -141,6 +141,7 @@ create table neworders(
  from customer , book , orders
  where (customer.custid = orders.custid) and (book.bookid = orders.bookid) and
        publisher in ('굿스포츠','나무수','대한미디어');
+       
  
  
 -- 2)두개 이상의 서로다른 출판사에서 도서를 구매한 고객의 이름
