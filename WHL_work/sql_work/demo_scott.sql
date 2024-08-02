@@ -104,14 +104,31 @@ from emp
 where DEPTNO = 30;
 
 -- 9) 평균 급여가 가장 높은 부서의 번호를 출력하세요.
-	 select deptno , max(sal)
-	 from emp
+     create view gugugu
+	 as select deptno, avg(sal) as vvs
+     from emp
      group by deptno;
      
+     select * from gugugu;
      
+     select  deptno 'Most rich Dept'
+     from gugugu
+     where  vvs in ( select max(vvs) from gugugu);
      
-                           
--- 10) 세일즈맨(SALESMAN)을 제외하고, 업무별 사원의 급여가 3,000 이상인 각 업무에 대해서, 업무명과 업무별 평균 급여를 출력하세요. 단 평균 급여는 내림차순으로 출력합니다.
+-- 10) 세일즈맨(SALESMAN)을 제외하고, 업무별 사원의 급여가 3,000 이상인 각 업무에 대해서,
+-- 	   업무명과 업무별 평균 급여를 출력하세요. 단 평균 급여는 내림차순으로 출력합니다.
+    create view sipsip
+	as select distinct job ,(sal>=3000) as rich
+	from emp
+    where (job not in ('salesman'));
+    
+    select * from sipsip;
+    
+    select emp.job , avg(sal)
+    from emp, sipsip
+    where (emp.job=sipsip.job) and rich
+    group by emp.job;
+
 -- 11) 전체 사원 가운데 직속상관이 있는 사원의 수를 출력하세요.
 -- 12) EMP테이블에서 이름, 겹여, 커미션(COMM)금액, 총액(SAL+COMM)을 구하여 총액이 많은 순서대로 출력하세요. 단 커미션이 NULL인 사람은 제외합니다.
 -- 13) 부서별로 같은 업무를 하는 사람의 인원수를 구하여 부서번호, 업무이름, 인원수를 출력하세요.
