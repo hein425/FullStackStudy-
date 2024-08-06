@@ -1,7 +1,9 @@
+drop table  professor;
+drop database university;
+
 create database university;
 use university;
 
-drop table  professor;
 
 create table professor( -- 교수 테이블
 p_ssn varchar(15) not null primary key,
@@ -22,7 +24,7 @@ create table department( -- 학과
 create table graduate( -- 대학원생
  g_ssn varchar(15) not null primary key,
  g_name varchar(30) not null,
- g_age integer null,
+ g_age char(3) not null,
  deg_prog varchar(3) not null,
  major varchar(15) not null, -- 전공
  foreign key(major) references department(dno),
