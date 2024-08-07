@@ -55,4 +55,20 @@ flush privileges;
 
 select * from user;
 
+-- insert: create : 회원가입, 글쓰기, 리뷰쓰기
+-- form input 데이터 최소한의 암호화, 보안
+-- 주소창에 데이터가 노출되지 않음
+-- <form method="post"></form>
+
+-- select : read : 게시물 목록, 검색결과, 회원정보
+-- 주소창에 검색하고자 하는 키워드: 제목 구인 
+-- selelct * form board where title like '%구인%';
+-- <form method="get" action=""></form>
+
+-- U:update 데이터수정, 방식 post:
+-- <form method="patch" action=""></form>
+
+-- D: delete 데이터삭제, 게시글삭제, 리뷰삭제, 회원탈되(? 는 애미)
+-- <form method="delete" action=""></form>
+-- 기술면접에 많이나옴
 
