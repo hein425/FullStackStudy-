@@ -17,11 +17,5 @@ public class Ex02 {
         while(st1.hasMoreTokens()){
             System.out.println(st1.nextToken());
         }
-
-
-
-
     }
-
-
 }
