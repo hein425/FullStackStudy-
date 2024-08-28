@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    //1.var :재선언 가능 
+    //2.let :
+    //3.const :상수화
+    //4.예약어 없이 선언 : 전역변수로 
+    // 1번, 4번은 안쓰는게 좋음
+    function doA(){
+      var k =20;
+      console.log('k = '+k);
+      a=10;
+      b=20;
+      let c =30;
+      var k = 30;
+      console.log('k = '+k);
+    }
+    doA();
+    console.log(a);
+    console.log(b);
+    console.log(c); // c는 출력이 안댐 저 안에만 있어서
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

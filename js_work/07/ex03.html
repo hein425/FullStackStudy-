@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">QWER</button>
+
+  <script>
+    // document.getElementById('btn').onclick = (e) =>{
+    //   console.log(this);
+    //   console.log(e);
+    //   console.log(e.target);
+    // }
+    // 도큐먼트는 현재문서에서, 윈도우오픈()은 새창여는거
+    // 화살표 함수에서는 this 가 윈도우객체
+
+    document.getElementById('btn').onclick = function(e){
+      console.log(this);
+      console.log(e.target);
+    }
+  </script>
+</body>
+</html>
