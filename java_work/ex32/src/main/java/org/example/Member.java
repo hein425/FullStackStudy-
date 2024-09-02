@@ -2,10 +2,11 @@ package org.example;
 
 import lombok.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
-@ToString
+//@ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -18,7 +19,18 @@ public class Member {
     private LocalDateTime regdate;
     private LocalDateTime mydate;
 
+    @Override
+    public String toString() {
+        String temp = mydate==null?"": DateTimeFormatter.ofPattern("yyyy/mm/dd").format(mydate);
 
-
-
+        return "Member{" +
+                "idx=" + idx +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", regdate=" + regdate +
+                ", mydate=" + temp +
+                '}';
+    }
 }

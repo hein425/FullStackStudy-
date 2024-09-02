@@ -7,38 +7,40 @@ import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Ex10 {
-    public static void main(String[] args) {
-        List<Member> list = new ArrayList<>();
-        try{
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jhn",
-                    "root",
-                    "1234");
-            PreparedStatement pstmt = conn.prepareStatement("select * from member order by idx desc");
-            ResultSet rs = pstmt.executeQuery();
-            //Class.forName("com.mysql.cj.jdbc.Driver");
 
-            while ((rs.next())){
-                Member member = Member.builder()
-                        .name(rs.getString("name"))
-                        .idx(rs.getInt("idx"))
-                        .age(rs.getInt("age"))
-                        .email(rs.getString("email"))
-                        .password(rs.getString("password"))
-                        .regdate(rs.getObject("regdate", LocalDateTime.class))
-                        .mydate(rs.getObject("mydate", LocalDateTime.class))
-                        .build();
-                list.add(member);
+    private MemberRepository memberRepository = new MemberRepository();
 
+    Ex10() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("""
+                    뭐 하실래요?
+                    0. login
+                    1. member select()
+                    2. member insert()
+                    3. member update()
+                    4. member delete()
+                    5. todo select()
+                    6. todo insert()
+                    7. todo update()
+                    8. todo delete()
+                    """);
+            int ra = sc.nextInt();
+
+            if (ra == 1) {
+                memberRepository.select();
+            } else if (ra == 2) {
+                memberRepository.insert();
+            } else {
+                System.out.println("종료합니다.");
+                break;
             }
-
-            list.stream()
-                    .forEach(System.out::println);
-
-            } catch(Exception e){
-            e.printStackTrace();
         }
-
+    }
+    public static void main(String[] args) {
+        new Ex10();
     }
 }
