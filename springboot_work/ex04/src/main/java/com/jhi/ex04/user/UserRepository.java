@@ -1,2 +1,6 @@
-package com.jhi.ex04.user;public class UserRepository {
+package com.jhi.ex04.user;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User,Long> {
 }
