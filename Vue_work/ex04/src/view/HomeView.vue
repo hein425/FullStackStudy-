@@ -1,29 +1,84 @@
 <template>
   <div>
     <h1>HOME</h1>
-    <ul>
-      <li v-for="user in list" v-bind:key="user.idx">
-        idx = {{ user.idx }} name = {{ user.name }}
-      </li>
-    </ul>
-    <button
-      @click="select"
-      class="bg-yellow-200 p-3 m-3 hover:bg-ywllow-100 border border-gray-300"
-    >
-      불러오기
-    </button>
+    <div class="p-5">
+      <table class="border border-gray-500 w-full">
+        <tr>
+          <th>idx</th>
+          <th>name</th>
+          <th>age</th>
+          <th>password</th>
+          <th>email</th>
+          
+        </tr>
+
+        <tr v-for="user in list" v-bind:key="user.idx">
+          <td>idx = {{ user.idx }}</td>
+          <td>name = {{ user.name }}</td>
+          <td>age = {{ user.age }}</td>
+          <td>password ={{ user.password }}</td>
+          <td>email ={{ user.email }}</td>
+        
+        </tr>
+      </table>
+      <button
+        @click="select"
+        class="bg-yellow-200 p-3 m-3 hover:bg-ywllow-100 border border-gray-300"
+      >
+        불러오기
+      </button>
+    </div>
+
     <div v-for="num in mylist" v-bind:key="num">num = {{ num }}</div>
+    <div class="p-5">
+      name =
+      <input
+        type="text"
+        name="name"
+        id=""
+        v-model="name"
+        class="border border-yellow-400 focus:ring-2 focus:ring-yellow-500 focus:outline-none rounded-lg p-3 w-64 text-yellow-900 placeholder-yellow-500 bg-yellow-100 transition-all duration-300 shadow-md hover:bg-yellow-200 hover:shadow-lg"
+      /><br />
+      age =
+      <input
+        type="number"
+        name="name"
+        id=""
+        v-model="age"
+        class="border border-yellow-400 focus:ring-2 focus:ring-yellow-500 focus:outline-none rounded-lg p-3 w-64 text-yellow-900 placeholder-yellow-500 bg-yellow-100 transition-all duration-300 shadow-md hover:bg-yellow-200 hover:shadow-lg"
+      /><br />
+      password =
+      <input
+        type="text"
+        name="name"
+        id=""
+        v-model="password"
+        class="border border-yellow-400 focus:ring-2 focus:ring-yellow-500 focus:outline-none rounded-lg p-3 w-64 text-yellow-900 placeholder-yellow-500 bg-yellow-100 transition-all duration-300 shadow-md hover:bg-yellow-200 hover:shadow-lg"
+      /><br />
+      email = 
+      <input
+        type="text"
+        name="name"
+        id=""
+        v-model="email"
+        class="border border-yellow-400 focus:ring-2 focus:ring-yellow-500 focus:outline-none rounded-lg p-3 w-64 text-yellow-900 placeholder-yellow-500 bg-yellow-100 transition-all duration-300 shadow-md hover:bg-yellow-200 hover:shadow-lg"
+      /><br />
+      
+      <button
+        @click="insert"
+        class="bg-yellow-200 p-3 m-3 hover:bg-ywllow-100 border border-gray-300"
+      >
+        입력
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
+import { toValue } from 'vue'
 import { ref } from 'vue'
 export default {
   setup() {
-    const mylist = [10, 20, 30]
-    const select = () => {
-      list.value = [{ idx: 1, name: '강제로바꿈' }]
-    }
     const list = ref([
       {
         idx: 3,
@@ -34,9 +89,58 @@ export default {
         wdate: '2024-09-06T11:18:32.729596'
       }
     ])
-    fetch(`192.168.0.29:8080/user.select`)
 
-    return { list, mylist, select }
+    const mylist = [10, 20, 30]
+
+    const name = ref('');
+    const age = ref('');
+    const password = ref('');
+    const email = ref('');
+  
+
+    const select = () => {
+      fetch(`http://localhost:8080/user/select`)
+        .then((res) => {
+          return res.json()
+        })
+        .then((result) => {
+          console.log(result)
+          list.value = result
+        })
+        .catch((e) => {
+          console.log('예외가 발생했습니다.')
+          console.log(e)
+        })
+
+      // list.value = [{ idx: 1, name: '강제로바꿈' }]
+    }
+
+    const insert = () =>{
+        const data = {
+          name:name.value,
+          age:age.value,
+          password:password.value,
+          email:email.value
+        }
+
+        try{
+        fetch(`http://localhost:8080/user/insert`,{
+          method:"POST",  
+          headers:{ 'Content-Type': 'application/json' },
+          body:JSON.stringify(data)
+        })
+        .then(res =>{
+          if(!res.status.toString().startsWith('2'))
+          alert('입력이 실패했습니다.');
+          else{alert('입력하였습니다.')}
+          })
+      }catch(e){
+          console.log(e)
+        }
+       console.log(data);
+    }
+
+    return { list, mylist, select, insert, name, age, password , email}
   }
 }
 </script>
