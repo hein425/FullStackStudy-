@@ -9,7 +9,6 @@
           <th>age</th>
           <th>password</th>
           <th>email</th>
-          
         </tr>
 
         <tr v-for="user in list" v-bind:key="user.idx">
@@ -18,7 +17,6 @@
           <td>age = {{ user.age }}</td>
           <td>password ={{ user.password }}</td>
           <td>email ={{ user.email }}</td>
-        
         </tr>
       </table>
       <button
