@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import TheHome from '../views/TheHome.vue';
 import TheUser from '../views/TheUser.vue';
-import TheFreeBoard from '../views/TheFreeboard.vue';
+import TheFreeBoardInput from '../views/freeboard/TheFreeboardInput.vue';
+import TheFreeBoardList from '../views/freeboard/TheFreeboardList.vue';
 
 
 const router = createRouter({
@@ -18,9 +19,14 @@ const router = createRouter({
       component: TheUser
     },
     {
-      path: '/freeboard',
-      name: 'freeboard',
-      component: TheFreeBoard
+      path: '/freeboardinput',
+      name: 'freeboardinput',
+      component: TheFreeBoardInput
+    },
+    {
+      path: '/freeboardList',
+      name: 'freeboardlist',
+      component: TheFreeBoardList
     }
   
   ]

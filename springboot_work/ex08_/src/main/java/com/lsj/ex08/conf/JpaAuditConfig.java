@@ -19,5 +19,5 @@ public class JpaAuditConfig {
 
 
     }
-
+// 어노테이션 크리에이트 , 라스트 모디파이 쓸수잇게
 }

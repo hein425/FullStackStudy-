@@ -1,5 +1,6 @@
 package com.lsj.ex08.freeboard;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class FreeBoardController {
     }
 
     @PostMapping
-    public ResponseEntity<FreeBoard> save(@RequestBody FreeBoardReqDto freeBoardReqDto) {
+    public ResponseEntity<FreeBoard> save(@Valid @RequestBody FreeBoardReqDto freeBoardReqDto) {
 
         FreeBoard freeBoard = new ModelMapper().map(freeBoardReqDto,FreeBoard.class);
         System.out.println("freeBoard = " + freeBoard);

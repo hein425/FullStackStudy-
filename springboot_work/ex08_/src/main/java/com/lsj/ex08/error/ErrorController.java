@@ -1,13 +1,18 @@
 package com.lsj.ex08.error;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import org.springframework.core.Constants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Set;
 
 @ControllerAdvice
 public class ErrorController {
@@ -31,21 +36,40 @@ public class ErrorController {
                 .body(new ErrorResponse());
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> validityException(MethodArgumentNotValidException e){
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorResponse> ConstraintViolationException(ConstraintViolationException e){
 
-        System.out.println(Arrays.toString(e.getDetailMessageArguments()));
+        //스트림으로 만들기
+        String msg = getConstraintViolations()
+                .stream()
+                .map(constraintViolation -> constraintViolation.getMessage())
+                .reduce("",(s,s2) -> s+s2);
+
+
+
+        // for로 만들기
+
+        Set<ConstraintViolation<?>> set = getConstraintViolations();
+        String test = "";
+        for (ConstraintViolation<?> item : set){
+            System.out.println(item);
+            System.out.println(item.getMessage());
+            test = item.getMessage();
+        }
+//        System.out.println(test);
+
+//        System.out.println(Arrays.toString(e.getDetailMessageArguments()));
 //        e.getFieldError()
 //                .stream()
 //                .forEach(fieldError -> System.out.println(fieldError.getDefaultMessage()));
 
 
-        String msg = (String) Arrays.stream(e.getDetailMessageArguments())
-                .reduce("",(s,s2)-> s.toString()+s2.toString());
+//        String msg = (String) Arrays.stream(e.getMessage())
+//                .reduce("",(s,s2)-> s.toString()+s2.toString());
 
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .httpStatus(HttpStatus.BAD_REQUEST)
-                .message( Arrays.toString(e.getDetailMessageArguments()))
+                .message(msg)
                 .localDateTime(LocalDateTime.now())
                 .build();
 
@@ -54,4 +78,10 @@ public class ErrorController {
                 .status(errorResponse.getHttpStatus())
                 .body(new ErrorResponse());
     }
+
+    private Set<ConstraintViolation<?>> getConstraintViolations() {
+        return null;
+    }
+
+
 }
