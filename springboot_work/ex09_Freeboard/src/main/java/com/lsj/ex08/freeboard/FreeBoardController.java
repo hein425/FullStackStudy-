@@ -1,7 +1,10 @@
 package com.lsj.ex08.freeboard;
 
+import com.lsj.ex08.error.BizException;
+import com.lsj.ex08.error.ErrorCode;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +21,7 @@ import java.util.List;
 @RequestMapping("freeboard")
 @RequiredArgsConstructor
 @CrossOrigin
+@Slf4j
 public class FreeBoardController {
 
     private final FreeBoardRepository freeBoardRepository;
@@ -59,6 +63,17 @@ public class FreeBoardController {
         return ResponseEntity.ok(freeBoardResponsePageDto);
     }
 
+    @GetMapping("view/{idx}")
+    public ResponseEntity<FreeBoardResponsePageDto> findOne(@PathVariable log idx){
+
+        FreeBoard freeBoard= freeBoardRepository.findById(idx).orElseThrow(()->new BizException(ErrorCode.NOT_FOUND));
+
+        log.info("idx="+idx);
+        return null;
+
+    }
+
+
 
     @PostMapping
     public ResponseEntity<FreeBoard> save(@Valid @RequestBody FreeBoardReqDto freeBoardReqDto){
@@ -67,6 +82,13 @@ public class FreeBoardController {
         return ResponseEntity.status(200).body(freeBoard);
     }
 
+
+    @DeleteMapping("delete/{idx}")
+    public ResponseEntity<String> deleteById(@PathVariable(name = "idx") long idx){
+        freeBoardRepository.findById(idx).orElseThrow(()->new BizException(ErrorCode.NOT_FOUND));
+        freeBoardRepository.deleteById(idx);
+        return ResponseEntity.ok("삭제되었습니다.");
+    }
 
 
 
