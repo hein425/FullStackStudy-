@@ -73,6 +73,8 @@ const getFreeBoard = (pageNum) => {
     console.log(e);
   })}
 
+
+getFreeBoard();
 </script>
 
 <style scoped></style>
