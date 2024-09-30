@@ -1,7 +1,7 @@
 <template>
-     <div>
-        <h1>TheHome</h1>
-    </div>
+  <div>
+    <h1 class="p-5 text-amber-500 text-5xl"> Hello :) </h1>
+  </div>
 </template>
 
 <script setup>

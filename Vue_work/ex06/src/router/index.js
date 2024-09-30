@@ -1,11 +1,15 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import TheHome from '@/views/TheHome.vue';
-import TheUser from '@/views/TheUser.vue';
+import TheUserList from '@/views/users/TheUserList.vue';
+
 import TheFreeBoardInput from '@/views/freeboard/TheFreeBoardInput.vue';
 import TheFreeBoardList from '@/views/freeboard/TheFreeBoardList.vue';
 import TheFreeBoardView from '@/views/freeboard/TheFreeBoardView.vue';
+import TheFreeBoardUpdate from '@/views/freeboard/TheFreeBoardUpdate.vue';
 
-const router = createRouter(   {
+import TheFileUpload from '@/views/TheFileUpload.vue';
+
+const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -16,7 +20,7 @@ const router = createRouter(   {
     {
       path: '/user',
       name: 'user',
-      component: TheUser
+      component: TheUserList
     },
     {
       path: '/freeboardinput',
@@ -24,16 +28,26 @@ const router = createRouter(   {
       component: TheFreeBoardInput
     },
     {
+      path: '/freeboardupdate',
+      name: 'freeboardupdate',
+      component: TheFreeBoardUpdate
+    },
+    {
       path: '/freeboardlist',
       name: 'freeboardlist',
       component: TheFreeBoardList
     },
     {
-      path: '/freeboardview:idx',
+      path: '/freeboardview/:idx',
       name: 'freeboardview',
-      component: TheFreeBoardList
+      component: TheFreeBoardView
+    },
+    {
+      path: '/fileupload',
+      name: 'fileupload',
+      component: TheFileUpload
     }
   ]
-}   )
+});
 
-export default router
+export default router;

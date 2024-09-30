@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <div class="p-5 bg-slate-500 text-white text-3xl">
+    <div class="p-5 bg-teal-500 text-white text-3xl">
       <nav class="flex space-x-5">
         <div>
           <RouterLink to="/">Home</RouterLink>
@@ -17,7 +17,7 @@ import { RouterLink, RouterView } from 'vue-router'
           <div class="opacity-0 
                     group-hover:opacity-100 
                     transition absolute 
-                    bg-slate-500 
+                    bg-teal-500 
                     p-5 top-8
                     -left-5
                     rounded">
@@ -28,6 +28,9 @@ import { RouterLink, RouterView } from 'vue-router'
               <RouterLink to="/freeboardinput">FreeBoardinput</RouterLink>
             </div>
           </div>
+        </div>
+        <div>
+          <RouterLink to="/fileupload">fileupload</RouterLink>
         </div>
       </nav>
     </div>
