@@ -23,13 +23,15 @@
         저장
       </button>
     </div>
+    <!-- <ComEditor /> -->
   </div>
 </template>
 
 <script setup>
-import axios from 'axios';
+// import ComEditor from '@/components/ComEditor.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { saveFreeboard } from '@/api/freeboardApi';
 
 const title = ref('');
 const content = ref('');
@@ -40,7 +42,7 @@ const onFileChange = (e)=>{
   myfile.value = e.target.files[0];
 }
 
-const save = () => {
+const save = async () => {
   const data = {
     title: title.value,
     content: content.value
@@ -54,21 +56,13 @@ const save = () => {
                         );
   formData.append("file", myfile.value);
 
-  axios
-    .post('http://localhost:10000/freeboard', formData, {
-      headers:{
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then((res) => {
-      console.log(res);
-      alert('저장하였습니다.');
-      router.push({ name: 'freeboardlist', params: { pagenum: 0 } });
-    })
-    .catch((e) => {
-      console.log(e);
-      alert('에러' + e.response.data.message);
-    });
+  const res = await saveFreeboard(formData);
+  if(res.status==200){
+    alert('저장하였습니다.');
+    router.push({name:'freeboardlist'});
+    return;
+  }
+  alert('에러' + res.response.data.message);
 };
 </script>
 

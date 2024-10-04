@@ -1,37 +1,34 @@
-import axios from "axios";
+import axios from 'axios';
+import {GLOBAL_URL} from './util.js';
 
-const URL = 'http://localhost:10000/user';
+const URL = `${GLOBAL_URL}/user`;
 
-export const getUsers = async() => {
-    
-    try{
+export const getUsers = async () => {
+  try {
     const res = await axios.get(`${URL}/select`);
-    console.log(res)
     return res;
-    } catch(e){
-        console.log(e);
-        return e;
-    }
-
-    // .then(res=>{
-    //     console.log(res);
-    //     return res.data;
-    // })
-    // .catch(e=>{
-    //     console.log(e);
-    //     return e;
-    // });
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
 };
-
 export const saveUser = async (item) => {
-    console.log("save"+JSON.stringify(item));
-    try{
-    await axios.put(`${URL}/update`,item);
+  try{
+    const res = await axios.put(`${URL}/update`,item);
     return res;
-    }catch(e){
-        console.log(e);
-        return e;
-    }
+  }catch(e){
+    console.log(e);
+    return e;
+  }
 };
 
-export const deletUser = () => {};
+export const deleteUser = async(idx) => {
+  try{
+    const res = await axios.delete(`${URL}/delete/${idx}`);
+    return res;
+  }catch(e){
+    console.log(e);
+    return e;
+  }
+
+};

@@ -1,7 +1,8 @@
 package com.pmh.ex10.file;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -16,27 +17,29 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("file")
 @CrossOrigin
+@Slf4j
 public class FileController {
 
     private final Path imagePath;
-    private final FileRepository fileRepository;
     private final ModelMapper modelMapper;
+    private final FileRepository fileRepository;
 
-    @Autowired
-    public FileController(FileRepository fileRepository, ModelMapper modelMapper) {
-        this.imagePath = Paths.get("images/file/").toAbsolutePath();
-        this.fileRepository = fileRepository;
+    public FileController(ModelMapper modelMapper, FileRepository fileRepository) {
         this.modelMapper = modelMapper;
+        this.fileRepository = fileRepository;
+        this.imagePath = Paths.get("images/file").toAbsolutePath();
 
         try {
             Files.createDirectories(this.imagePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @GetMapping("test")
@@ -49,12 +52,13 @@ public class FileController {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String upload(
             @RequestPart(name = "file") MultipartFile file,
-             @RequestPart(name = "fileDto") FileReqDto fileReqDto) {
+            @RequestPart(name = "fileDto") FileReqDto fileReqDto) {
         try {
-            String myFilePath = imagePath.toAbsolutePath() + "\\" + file.getOriginalFilename();
+            String fileName = file.getOriginalFilename();
+            String filePath = imagePath.toString()+File.separator+fileName;
 
-            File saveFile = new File(myFilePath);
-            file.transferTo(saveFile);
+            File dest = new File(filePath);
+            file.transferTo(dest);
 
             FileEntity fileEntity = modelMapper.map(fileReqDto, FileEntity.class);
             fileRepository.save(fileEntity);
@@ -65,9 +69,25 @@ public class FileController {
         return "upload";
     }
 
+    @PostMapping(value = "uploads", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uploads(@RequestPart(name = "files") MultipartFile[] files,
+                          @RequestPart(name = "fileDto") HashMap<String, String> map) {
+        try{
+            for (MultipartFile file : files) {
+                String fileName = file.getOriginalFilename();
+                String filePath = imagePath.toString()+File.separator+fileName;
+                File dest = new File(filePath);
+                file.transferTo(dest);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
+        return "upload";
+
+    }
     @GetMapping("/download/{fileName}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName) throws IOException {
+    public ResponseEntity<Resource> downloadFile(@PathVariable(name = "fileName") String fileName) throws IOException {
         // 파일이 저장된 경로
         Path filePath = imagePath.resolve(fileName);
         Resource resource = new UrlResource(filePath.toUri());
@@ -83,4 +103,3 @@ public class FileController {
                 .body(resource);
     }
 }
-

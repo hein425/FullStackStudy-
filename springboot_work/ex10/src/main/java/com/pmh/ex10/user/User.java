@@ -35,12 +35,13 @@ public class User {
     @Column(length = 100)
     private String password;
 
+    @Column(updatable = false)
     private LocalDateTime wdate;
 
     @OneToMany(mappedBy = "user",
             fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL
-    )
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<FreeBoard> list = new ArrayList<>();
 
 }

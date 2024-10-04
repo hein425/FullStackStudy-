@@ -67,8 +67,7 @@
 </template>
 
 <script setup>
-import { getUsers, saveUser } from '@/api/userApi.js';
-import axios from 'axios';
+import { deleteUser, getUsers, saveUser } from '@/api/userApi.js';
 import { ref, watchEffect } from 'vue';
 
 const arr = ref([]);
@@ -80,9 +79,13 @@ const email = ref();
 
 const isModal = ref(false);
 
-const doDelete = () =>{
-  console.log('delete')
-}
+
+const doDelete = async(idx) =>{
+    await deleteUser(idx);
+    const retValue = await getUsers();
+    arr.value = retValue.data;
+};
+
 
 const modalUser = async (item)=>{
   isModal.value = !isModal.value;
