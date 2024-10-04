@@ -8,6 +8,7 @@ import TheFreeBoardView from '@/views/freeboard/TheFreeBoardView.vue';
 import TheFreeBoardUpdate from '@/views/freeboard/TheFreeBoardUpdate.vue';
 
 import TheFileUpload from '@/views/file/TheFileUpload.vue';
+import TheFileUploads from '@/views/file/TheFileUploads.vue';
 import TheFileDownload from '@/views/file/TheFileDownload.vue';
 
 const router = createRouter({
@@ -47,6 +48,11 @@ const router = createRouter({
       path: '/fileupload',
       name: 'fileupload',
       component: TheFileUpload
+    },
+    {
+      path: '/fileuploads',
+      name: 'fileuploads',
+      component: TheFileUploads
     },
     {
       path: '/filedownload',

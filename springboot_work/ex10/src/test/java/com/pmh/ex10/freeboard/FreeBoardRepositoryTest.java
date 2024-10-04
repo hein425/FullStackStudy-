@@ -5,6 +5,7 @@ import com.pmh.ex10.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -75,5 +76,7 @@ class FreeBoardRepositoryTest {
                 .build();
         freeBoardRepository.save(freeBoard);
     }
+
+
 
 }

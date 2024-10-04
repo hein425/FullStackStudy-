@@ -112,7 +112,7 @@ public class FreeBoardController {
     }
 
     @PostMapping(
-            produces = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE, // 데이터들이 제이손으로 들어온다
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
 //    @Transactional
@@ -120,12 +120,17 @@ public class FreeBoardController {
             @Valid @RequestPart(name = "data") FreeBoardReqDto freeBoardReqDto,
             @RequestPart(name = "file", required = false) MultipartFile file) {
 
+
         FreeBoard freeBoard = new ModelMapper().map(freeBoardReqDto, FreeBoard.class);
 
+        //insert가 들어올때 idx 자동증가
         if(freeBoardReqDto.getIdx()==null) {
             freeBoardRepository.save(freeBoard);
         }
+
+        // update 수행할때
         else{
+            // select * frome free_board where idx 1
             FreeBoard dbFreeBoard = freeBoardRepository.findById(freeBoard.getIdx()).orElseThrow();
             dbFreeBoard = new ModelMapper().map(freeBoardReqDto, FreeBoard.class);
             freeBoardRepository.save(dbFreeBoard);
@@ -157,19 +162,31 @@ public class FreeBoardController {
             });
             freeBoardRepository.save(freeBoard);
         }
-
+        freeBoard.setList(Arrays.asList());
         return ResponseEntity.status(200).body(freeBoard);
     }
 
 
     @DeleteMapping("delete/{idx}")
     public ResponseEntity<String> deleteById(@PathVariable(name = "idx") long idx) {
+
         FreeBoard freeBoard = freeBoardRepository.findById(idx).orElseThrow(() -> new BizException(ErrorCode.NOT_FOUND));
-        freeBoard.setUser(null);
+
+//        freeBoard.setList(new ArrayList<>());
+        freeBoard.setUser(null); // 연결된 유저와의 관계를 끊어냄
         freeBoardRepository.save(freeBoard);
         freeBoardRepository.delete(freeBoard);
+
+
+
+//        fileRepository.findByFreeBoardIdx(freeBoard.getIdx()).forEach(fileEntity -> {
+//            fileRepository.deleteById(fileEntity.getIdx());
+//        } );
+//        freeBoardRepository.cusDeleteByIdx(idx); // 만들어둔 JpQL 직접 쏴줌
+
         return ResponseEntity.ok("삭제되었습니다.");
     }
+
 
 
 }
