@@ -30,5 +30,9 @@ spring:
       file-size-threshold: 0
       enabled: true
 
+  jwt:
+    secret: abcdefghijklmnopqrstuvwxyz0123456789
+
 my:
   value: "welcome to my value"
+
