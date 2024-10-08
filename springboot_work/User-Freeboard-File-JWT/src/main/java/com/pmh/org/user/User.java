@@ -42,13 +42,14 @@ public class User {
     @CreatedDate
     private LocalDateTime wdate;
 
-    // 테이블 create 하면서 role 칼럼 추가
+    private String profileImageUrl;
+
     private String role;
 
     @OneToMany(mappedBy = "user",
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
-            orphanRemoval = true) // 고아객체 제거해라. 고아 객체가 됐을때 파일 엔티티 삭제해라
+            orphanRemoval = true)
     private List<FreeBoard> list = new ArrayList<>();
 
 }
