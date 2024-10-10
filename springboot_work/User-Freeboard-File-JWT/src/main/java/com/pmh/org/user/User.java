@@ -42,8 +42,6 @@ public class User {
     @CreatedDate
     private LocalDateTime wdate;
 
-    private String profileImageUrl;
-
     private String role;
 
     @OneToMany(mappedBy = "user",

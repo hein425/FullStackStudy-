@@ -4,7 +4,7 @@
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 class="text-2xl font-bold mb-6 text-center">회원가입</h2>
         
-        <form @submit="doSubmit">
+        <form @submit.prevent="doSubmit">
             <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-700">사용자 이름</label>
                 <input type="text" id="username" name="username"
@@ -53,23 +53,30 @@ const doSubmit = async (event) =>{
     console.log('연결됐냐'+event);
 
     const res = await doJoin({
-       "name":"홍길동",
+       "name":"정해인",
        "password":"1234",
        "age":"11",
-       "email":"aaa@naver.com" 
+       "email":"asd@aaa.com" 
     });
-    console.log
 
-    alert("회원가입 완료 ㅎㅎ")
+    if (res.status=='200'){
+        alert("회원가입 성공. 로그인페이지로 이동합니다.");
+        router.push({name:'login'});
+    }
+    else{
+        console.log(res);
+        alert('회원가입실패'+res.response.data.message);
+    }
 
-    router.push({name:'login'})
-}
+
+  //  router.push({name:'login'})
+};
 
 
-const gologin=()=> {
+// const gologin=()=> {
 
-    router.push({name:'login'})
-}
+//     router.push({name:'login'})
+// };
 
 </script>
 

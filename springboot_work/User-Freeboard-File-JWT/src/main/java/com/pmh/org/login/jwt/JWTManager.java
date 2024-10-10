@@ -1,4 +1,4 @@
-package com.pmh.org.jwt;
+package com.pmh.org.login.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -52,5 +52,27 @@ public class JWTManager {
             return "fail";
         }
         return "success";
+    }
+
+
+    public Jws<Claims> getClaims(String jwt){
+        String secrekey = environment.getProperty("spring.jwt.secret");
+        try {
+            // 비밀번호 설정
+            SecretKey secretKey
+                    = new SecretKeySpec(secrekey.getBytes(),
+                    Jwts.SIG.HS256.key().build().getAlgorithm());
+            // 해당비밀번호로 jwt 토큰 복호화 하여 claim 가져오기
+            Jws<Claims> claims = Jwts.parser()
+                    .verifyWith(secretKey)
+                    .build()
+                    .parseSignedClaims(jwt);
+
+            return claims;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }
