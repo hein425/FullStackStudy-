@@ -1,6 +1,5 @@
 package com.pmh.org.user;
 
-
 import com.pmh.org.error.BizException;
 import com.pmh.org.error.ErrorCode;
 import lombok.RequiredArgsConstructor;

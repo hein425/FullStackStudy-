@@ -51,3 +51,12 @@ public class User {
     private List<FreeBoard> list = new ArrayList<>();
 
 }
+
+
+
+
+
+
+
+
+

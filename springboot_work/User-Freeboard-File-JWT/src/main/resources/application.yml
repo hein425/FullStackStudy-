@@ -19,6 +19,7 @@ spring:
       ddl-auto: create
     properties:
       hibernate.format_sql: true
+      hibernate.dialect: org.hibernate.dialect.MariaDBDialect  # hibernate.dialect 속성 추가
     show-sql: true
     open-in-view: false
     defer-datasource-initialization: true

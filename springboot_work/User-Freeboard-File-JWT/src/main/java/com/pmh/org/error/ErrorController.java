@@ -1,8 +1,6 @@
 package com.pmh.org.error;
 
-
 import jakarta.validation.ConstraintViolationException;
-import org.hibernate.annotations.processing.SQL;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -27,7 +25,6 @@ public class ErrorController {
                 .status(errorResponse.getHttpStatus())
                 .body(errorResponse);
     }
-
 
     @ExceptionHandler(BizException.class)
     public ResponseEntity<ErrorResponse> mException(BizException e){
@@ -91,16 +88,3 @@ public class ErrorController {
 //    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

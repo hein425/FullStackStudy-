@@ -1,5 +1,6 @@
 package com.pmh.org.login;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
