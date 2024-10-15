@@ -60,6 +60,7 @@
 <script setup>
 import { deleteUser, getUsers, saveUser } from '@/api/userApi.js';
 import { ref, watchEffect } from 'vue';
+import Swal from "sweetalert2";
 
 const arr = ref([]);
 
@@ -85,7 +86,7 @@ const modalUser = async (item) => {
       email: email.value,
       password: '마이패스워드'
     });
-    alert('수정하였습니다.');
+    Swal.fire('수정하였습니다.');
     const retValue = await getUsers();
     arr.value = retValue.data;
     return;

@@ -41,8 +41,12 @@
           </div>
         </div>
 
-        <template v-if="loginCheck">
-          <div> 로그인 하셧네요? </div>
+        <template v-if="loginPinia.loginCheck">
+          <div class="flex space-x-5">
+            <h1>{{ loginPinia.name }} 님</h1>
+            <button @click="logout()"> logout</button>
+          </div>
+            
         </template>
 
         <template v-else>
@@ -53,7 +57,7 @@
             <div>
               <RouterLink to="/login">login</RouterLink>
             </div>
-          </div>    
+          </div> 
         </template>
       </nav>
     </div>
@@ -62,17 +66,35 @@
 
 <script setup>
 import { dologinCheck } from '@/api/loginApi';
-import { ref, watchEffect } from 'vue';
+// import { router } from '@/router';
+import { useLoginStore } from '@/store/loginPinia';
+import { watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
-const loginCheck = ref('false');
 
-watchEffect(() => {
-   const result = dologinCheck(); 
+const loginPinia = useLoginStore();
+const logout = () => {
+  localStorage.removeItem("token");
+  loginPinia.logout();
+}
+
+watchEffect(async() => {
+   const result = await dologinCheck();
+   
    if(result==false){
-    loginCheck.value = false;
+    // loginCheck.value = false;
+    // router.push({name : 'login'});
+    loginPinia.logout();
    }else{
     console.log(result);
-    loginCheck.value = true;
+    if(result.status==200){
+      // loginCheck.value = true;
+      loginPinia.login(result.data)
+    }else if(result.status==401){
+      localStorage.removeItem("token");
+      loginPinia.logout();
+      // loginCheck.value = false;
+    }
+    // loginCheck.value = false;
    }
 });
 </script>

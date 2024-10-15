@@ -7,26 +7,25 @@
         <form @submit.prevent="doSubmit">
             <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-700">사용자 이름</label>
-                <input type="text" id="username" name="username"
-                value="정해인"
+                <input type="text" id="username" name="username" v-model=name
                 required class="mt-1 p-2 border border-gray-300 rounded w-full" placeholder="사용자 이름을 입력하세요">
             </div>
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-700">이메일</label>
                 <input type="email" id="email" name="email" 
-                value="hein@aaa.com"
+                v-model=email
                 required class="mt-1 p-2 border border-gray-300 rounded w-full" placeholder="이메일을 입력하세요">
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-700">비밀번호</label>
                 <input type="password" id="password" name="password"
-                value="1234"
+                v-model=password
                 required class="mt-1 p-2 border border-gray-300 rounded w-full" placeholder="비밀번호를 입력하세요">
             </div>
             <div class="mb-4">
                 <label for="confirm-password" class="block text-sm font-medium text-gray-700">비밀번호 확인</label>
                 <input type="password" id="confirm-password" name="confirm-password"
-                value="1234"
+                v-model=passwordConfirm
                 required class="mt-1 p-2 border border-gray-300 rounded w-full" placeholder="비밀번호를 다시 입력하세요">
             </div>
 
@@ -42,9 +41,12 @@
 <script setup>
 import {doJoin} from '@/api/loginApi'
 import { useRouter } from 'vue-router';
+import { ref } from 'vue';
 
 const router = useRouter();
-
+const name = ref('');
+const password = ref('');
+const email = ref('');
 
 
 const doSubmit = async (event) =>{
@@ -53,10 +55,9 @@ const doSubmit = async (event) =>{
     console.log('연결됐냐'+event);
 
     const res = await doJoin({
-       "name":"정해인",
-       "password":"1234",
-       "age":"11",
-       "email":"asd@aaa.com" 
+       "name": name.value,
+       "password": password.value,
+       "email": email.value
     });
 
     if (res.status=='200'){
@@ -64,14 +65,14 @@ const doSubmit = async (event) =>{
         router.push({name:'login'});
     }
     else{
-        console.log(res);
+    
         alert('회원가입실패'+res.response.data.message);
     }
 
 
-  //  router.push({name:'login'})
+   // router.push({name:'login'})
 };
-
+0
 
 // const gologin=()=> {
 

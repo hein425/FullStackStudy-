@@ -1,0 +1,28 @@
+# 디스트 생성
+npm run build
+
+# 마이엔진엑스 컨테이너 생성
+docker run -d  --name my-nginx -p 80:80 nginx
+
+# 호스트 피시에서 dist로 이동
+cd dist
+
+# 호스트피씨에서 인덷ㄱ스에 잇는 여러 파일을 엔진엑스 컨테이너로 복사
+docker cp . my-nginx:/usr/share/nginx/html
+
+docker cp default.conf my-nginx:/etc/nginx/conf.d/default.conf
+
+# 윈도우 호스트 PC 에서 가상 PC 리눅스인 my-nginx 컨테이너로 이동하는 명령어
+
+docker exec -it my-nginx bash
+
+# 컨테이너를 이미지 파일로 변경하기
+
+docker commit my-nginx parkmyounghoi/my-nginx
+
+# dockerhub에 업로드 하기
+
+docker push parkmyounghoi/my-nginx
+
+#에러페이지 지정
+error_page 404 /index.html

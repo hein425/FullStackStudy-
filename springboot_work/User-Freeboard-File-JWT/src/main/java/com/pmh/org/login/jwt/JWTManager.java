@@ -1,9 +1,7 @@
 package com.pmh.org.login.jwt;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import com.pmh.org.error.JWTAuthException;
+import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -70,8 +68,8 @@ public class JWTManager {
 
             return cliams;
         }catch (Exception e){
-            e.printStackTrace();
-            return null;
+            throw new JWTAuthException("JWT TOKEN"+e.getMessage());
+
         }
     }
 }
