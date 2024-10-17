@@ -1,0 +1,17 @@
+
+# 컨테이너 중지해라
+docker stop freeboardvue 
+
+# 이미지 삭제해라
+docker rmi hheee/freeboardvue 
+
+# 컨테이너 삭제해라
+docker rm freeboardvue
+
+# 이미지 생성해라 (도커파일은 현재 폴더 안에 있다.)
+docker build -t hheee/freeboardvue .
+
+# 컨테이너 생성해라
+docker run -d -p 5173:5173 --name freeboardvue hheee/freeboardvue
+
+# ./cmd_  (지금 여기 써있는거 돌려라)
