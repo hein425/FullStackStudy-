@@ -1,0 +1,8 @@
+# 이미지 삭제 명령어
+docker rmi hheee/userservice:k8.01
+
+#이미지 생성
+docker build -t hheee/userservice:k8.01 .
+
+#이미지 도커허브에 업로드
+docker push hheee/userservice:k8.01

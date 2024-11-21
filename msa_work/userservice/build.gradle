@@ -30,9 +30,10 @@ ext {
 dependencies {
 	// actuator 환경설정 새로고침
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'io.micrometer:micrometer-registry-prometheus'
 
 	// 유레카 클라이언트. 이거잇어야 유레카 등록 됨
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	// bootsrap.yml 생성해서 config서버 위치 지정
 //	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 //	implementation 'org.springframework.cloud:spring-cloud-starter-config'
