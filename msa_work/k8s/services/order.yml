@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment # pod 여래개 쓸수있다.
+metadata:
+  name: order-service-deployment
+spec: # 규격( 어떻게 만들지에 대해)
+  replicas: 1 # pod 몇개 만들래
+  selector:
+    matchLabels:
+      app: order-service # 쿠버네티스 안에서 변수명으로 마리아디비라고 부르겟다
+  template: # 템플릿
+    metadata:
+      labels:
+        app: order-service # 서비스에서 찾는 변수명
+    spec: # pod 하나하나에 대한 내용
+      containers:
+        - name: order-service
+          image: hheee/order-service:k8.01 # 도커허브에 있는 이미지
+          ports:
+            - containerPort: 40004 #default one
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: msa-k8s-configmap
+                  key: spring-datasource-url-order
+
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: msa-k8s-configmap
+                  key: spring-datasource-username
+
+            - name: SERVER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: msa-k8s-configmap
+                  key: order-service-port
+
+            - name: FIRST_SERVICE_URL
+              value: first-service:40001
+            - name: ORDER_SERVICE_URL
+              value: order-service:40004
+
+--- # 환경을 두개 달고 싶을때 구분자
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 40004
+      targetPort: 40004
+  selector:
+    app: order-service

@@ -22,7 +22,7 @@ spec: # 규격( 어떻게 만들지에 대해)
               valueFrom:
                 configMapKeyRef:
                   name: msa-k8s-configmap
-                  key: spring-datasource-url
+                  key: spring-datasource-url-user
 
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
@@ -35,6 +35,11 @@ spec: # 규격( 어떻게 만들지에 대해)
                 configMapKeyRef:
                   name: msa-k8s-configmap
                   key: user-service-port
+
+            - name: FIRST_SERVICE_URL
+              value: first-service:40001
+            - name: ORDER_SERVICE_URL
+              value: order-service:40004
 
 --- # 환경을 두개 달고 싶을때 구분자
 

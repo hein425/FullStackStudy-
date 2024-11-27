@@ -1,0 +1,8 @@
+# 이미지 삭제 명령어
+docker rmi hheee/order-service:k8.01
+
+#이미지 생성
+docker build -t hheee/order-service:k8.01 .
+
+#이미지 도커허브에 업로드
+docker push hheee/order-service:k8.01
