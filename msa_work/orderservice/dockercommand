@@ -1,4 +1,5 @@
 # 이미지 삭제 명령어
+kubectl delete deploy order-service-deployment
 docker rmi hheee/order-service:k8.01
 
 #이미지 생성

@@ -14,7 +14,7 @@ spec: # 규격( 어떻게 만들지에 대해)
     spec: # pod 하나하나에 대한 내용
       containers:
         - name: user-service
-          image: hheee/userservice:k8.01 # 도커허브에 있는 이미지
+          image: hheee/userservice:k8.02 # 도커허브에 있는 이미지
           ports:
             - containerPort: 40003 #default one
           env:
