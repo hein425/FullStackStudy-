@@ -36,4 +36,3 @@ const arr3 = ["안녕", "나는", "정해인이야"];
 console.log(arr3.join());
 console.log(arr3.join("-"));
 console.log(arr3.join(""));
-
