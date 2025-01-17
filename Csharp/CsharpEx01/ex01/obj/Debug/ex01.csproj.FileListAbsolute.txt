@@ -1,0 +1,11 @@
+D:\cs\ex01\ex01\bin\Debug\ex01.exe.config
+D:\cs\ex01\ex01\bin\Debug\ex01.exe
+D:\cs\ex01\ex01\bin\Debug\ex01.pdb
+D:\cs\ex01\ex01\obj\Debug\ex01.csproj.AssemblyReference.cache
+D:\cs\ex01\ex01\obj\Debug\ex01.FirstCustomControl.resources
+D:\cs\ex01\ex01\obj\Debug\ex01.Form1.resources
+D:\cs\ex01\ex01\obj\Debug\ex01.Properties.Resources.resources
+D:\cs\ex01\ex01\obj\Debug\ex01.csproj.GenerateResource.cache
+D:\cs\ex01\ex01\obj\Debug\ex01.csproj.CoreCompileInputs.cache
+D:\cs\ex01\ex01\obj\Debug\ex01.exe
+D:\cs\ex01\ex01\obj\Debug\ex01.pdb
